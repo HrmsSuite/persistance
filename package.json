@@ -1,0 +1,29 @@
+{
+  "name": "persistance",
+  "version": "1.0.0",
+  "description": "This Repo contains the Schema Design of the Management",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HrmsSuite/persistance.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HrmsSuite/persistance/issues"
+  },
+  "homepage": "https://github.com/HrmsSuite/persistance#readme",
+  "dependencies": {
+    "mongoose": "^9.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "dotenv": "^17.4.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
