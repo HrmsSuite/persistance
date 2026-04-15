@@ -2,9 +2,15 @@
   "name": "persistance",
   "version": "1.0.0",
   "description": "This Repo contains the Schema Design of the Management",
-  "main": "src/index.ts",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
