@@ -1,38 +1,31 @@
 {
-  "name": "@hrmssuite/persistance",
-  "version": "1.0.2",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
-  "description": "This Repo contains the Schema Design of the Management",
-  "main": "dist/index.js",
+  "name": "@hrmssuite/persistence",
+  "version": "1.0.3",
+  "description": "Shared TypeScript types for HRMS",
+
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts"
+    }
+  },
+
+  "files": ["dist"],
+
   "scripts": {
-    "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "prepare": "npm run build"
   },
+
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HrmsSuite/persistance.git"
+    "url": "git+https://github.com/HrmsSuite/persistence.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HrmsSuite/persistance/issues"
-  },
-  "homepage": "https://github.com/HrmsSuite/persistance#readme",
-  "dependencies": {
-    "mongoose": "^9.4.1"
-  },
-  "devDependencies": {
-    "@types/node": "^25.6.0",
-    "dotenv": "^17.4.2",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.2"
-  }
+
+  "license": "ISC"
 }
