@@ -1,0 +1,4 @@
+export * from "../types/employee.typings";
+export * from "../types/designation.typings";
+export * from "../types/department.typings";
+export * from "../types/datas.typings";
