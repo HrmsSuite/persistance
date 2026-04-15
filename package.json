@@ -1,8 +1,11 @@
 {
-  "name": "persistance",
+  "name": "@hrmssuite/persistance",
   "version": "1.0.0",
+   "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "description": "This Repo contains the Schema Design of the Management",
-  "main": "dist/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
