@@ -1,31 +1,26 @@
 {
   "name": "@hrmssuite/persistence",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Shared TypeScript types for HRMS",
-
   "types": "dist/index.d.ts",
-
   "exports": {
     ".": {
       "types": "./dist/index.d.ts"
     }
   },
-
-  "files": ["dist"],
-
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
   },
-
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HrmsSuite/persistence.git"
   },
-
   "license": "ISC"
 }
