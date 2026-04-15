@@ -1,7 +1,7 @@
 {
   "name": "@hrmssuite/persistance",
-  "version": "1.0.0",
-   "publishConfig": {
+  "version": "1.0.1",
+  "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "description": "This Repo contains the Schema Design of the Management",
