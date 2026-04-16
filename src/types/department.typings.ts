@@ -8,5 +8,7 @@ export interface Department {
     meta:{
         createdAt:Date;
         updatedAt:Date;
+        version: number;     
+        isDeleted: boolean;
     }
 }

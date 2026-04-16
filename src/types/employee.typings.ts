@@ -1,8 +1,9 @@
+import {Types} from "mongoose"
 
-type EmploymentType = 'Full-time' | 'Part-time' | 'Contract' | 'Intern';
-type EmployeeStatus = 'Active' | 'Inactive' | 'On Leave' | 'Terminated';
-type Gender = 'Male' | 'Female' | 'Other';
-type PayFrequency = 'Monthly' | 'Bi-weekly';
+export type EmploymentType = 'Full-time' | 'Part-time' | 'Contract' | 'Intern';
+export type EmployeeStatus = 'Active' | 'Inactive' | 'On Leave' | 'Terminated';
+export type Gender = 'Male' | 'Female' | 'Other';
+export type PayFrequency = 'Monthly' | 'Bi-weekly';
 
 export interface EmployeeBasic {
   employeeId: string;
@@ -17,11 +18,11 @@ export interface EmployeeBasic {
 }
 
 export interface JobDetails {
-  designation: string;
-  department: string;
+  designation: Types.ObjectId;
+  department: Types.ObjectId;
   employmentType: EmploymentType;
   dateOfJoining: Date;
-  reportingManagerId?: string;
+  reportingManagerId?: Types.ObjectId;
   workLocation: string;
   employeeStatus: EmployeeStatus;
 }
@@ -36,6 +37,8 @@ export interface BankDetails {
   accountNumber: string;
   ifscCode?: string;
   branch?: string;
+   createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface LegalDetails {
@@ -65,16 +68,16 @@ export interface Document {
   uploadedAt: Date;
 }
 
-export interface EmployeeData {
-  basic: EmployeeBasic;
-  job: JobDetails;
-  compensation: Compensation;
-  bank?: BankDetails;
-  legal?: LegalDetails;
-  address: Address;
-  leave?: LeaveInfo;
-  documents?: Document[];
-  
+  export interface EmployeeData {
+    basic: EmployeeBasic;
+    job: JobDetails;
+    compensation: Compensation;
+    bank?: BankDetails;
+    legal?: LegalDetails;
+    address: Address;
+    leave?: LeaveInfo;
+    documents?: Document[];
+    
 }
 
 export interface Employee {
