@@ -1,1 +1,6 @@
 export { connectDB, disconnectFromDB } from "./DB/db"
+export * from "./types/index"
+export * from "./models/index"
+export * from "./schema/index"
+export * from "./datas/bank"
+export * from "./datas/cities"
