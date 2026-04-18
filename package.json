@@ -1,10 +1,13 @@
 {
   "name": "@hrmssuite/persistence",
-  "version": "1.0.6",
-  "description": "Shared TypeScript types for HRMS",
+  "version": "1.0.7",
+  "description": "Shared persistence layer for HRMS",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
