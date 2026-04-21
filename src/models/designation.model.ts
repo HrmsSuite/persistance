@@ -13,11 +13,14 @@ const DesignationSchema = new Schema<Designations>(
       isDeleted: { type: Boolean, default: false },
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 DesignationSchema.index({ "data.name": 1 }, { unique: true });
 DesignationSchema.index({ "data.level": 1 });
 DesignationSchema.index({ "meta.isDeleted": 1 });
 
-export const DesignationModel = model<Designations>("Designation", DesignationSchema);
+export const DesignationModel = model<Designations>(
+  "Designation",
+  DesignationSchema,
+);
