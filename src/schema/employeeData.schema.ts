@@ -1,15 +1,13 @@
 import { Schema } from "mongoose";
 import { EmployeeData } from "../types";
-import {
-  JobDetailSchema,
-  CompensationSchema,
-  BankDetailSchema,
-  LegalSchema,
-  AddressSchema,
-  LeaveInfoSchema,
-  DocumentSchema,
-  EmployeeBasicSchema,
-} from "./index";
+import { JobDetailSchema } from "./jobDetails.schema";
+import { CompensationSchema } from "./pay.schema";
+import { BankDetailSchema } from "./pay.schema";
+import { LegalSchema } from "./pay.schema";
+import { AddressSchema } from "./address.schema";
+import { LeaveInfoSchema } from "./leave.schema";
+import { DocumentSchema } from "./document.schema";
+import { EmployeeBasicSchema } from "./employee.schema";
 
 export const EmployeeDataSchema = new Schema<EmployeeData>(
   {
