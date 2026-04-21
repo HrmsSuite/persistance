@@ -5,13 +5,13 @@ const genderEnum: Gender[] = ["Male", "Female", "Other"];
 
 export const EmployeeBasicSchema = new Schema<EmployeeBasic>(
   {
-    employeeId: { type: String, required: true, unique: true, trim: true },
+    employeeId: { type: String, required: true, trim: true },
     firstName: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },
     gender: { type: String, enum: genderEnum },
     dateOfBirth: { type: Date },
-    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
-    phone: { type: String, required: true, unique: true, trim: true },
+    email: { type: String, required: true, lowercase: true, trim: true },
+    phone: { type: String, required: true, trim: true },
     profilePhotoUrl: { type: String, trim: true },
   },
   { _id: false },

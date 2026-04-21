@@ -3,6 +3,12 @@ import { Designations } from "../types";
 
 const DesignationSchema = new Schema<Designations>(
   {
+    companyId: {                         // ✅ added
+      type: Schema.Types.ObjectId,
+      ref: "Company",
+      required: true,
+      index: true,
+    },
     data: {
       name: { type: String, required: true, trim: true },
       sortHand: { type: String, trim: true },
@@ -16,7 +22,7 @@ const DesignationSchema = new Schema<Designations>(
   { timestamps: true },
 );
 
-DesignationSchema.index({ "data.name": 1 }, { unique: true });
+DesignationSchema.index({ companyId: 1, "data.name": 1 }, { unique: true });
 DesignationSchema.index({ "data.level": 1 });
 DesignationSchema.index({ "meta.isDeleted": 1 });
 

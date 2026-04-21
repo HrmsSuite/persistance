@@ -81,12 +81,13 @@ export interface Document {
 }
 
 export interface Employee {
+  companyId: Types.ObjectId;
   data: EmployeeData; 
 
   meta: {
-    createdAt: Date;
-    updatedAt: Date;
     version: number;         
     isDeleted?: boolean;    
   };
+  createdAt: Date;
+    updatedAt: Date;
 }

@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface DesignationsData {
     name:string;
     sortHand?:string;
@@ -6,6 +8,7 @@ export interface DesignationsData {
     updatedAt?: Date;
 }
 export interface Designations {
+    companyId:Types.ObjectId
     data: DesignationsData;
     meta:{
         createdAt:Date;

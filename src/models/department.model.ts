@@ -3,6 +3,12 @@ import { Department } from "../types";
 
 const DepartmentSchema = new Schema<Department>(
   {
+    companyId: {                          
+      type: Schema.Types.ObjectId,
+      ref: "Company",
+      required: true,
+      index: true,
+    },
     data: {
       name: { type: String, required: true, trim: true },
       designation: [{ type: Schema.Types.ObjectId, ref: "Designation" }],
@@ -15,7 +21,7 @@ const DepartmentSchema = new Schema<Department>(
   { timestamps: true }
 );
 
-DepartmentSchema.index({ "data.name": 1 }, { unique: true });
+DepartmentSchema.index({ companyId: 1, "data.name": 1 }, { unique: true });
 DepartmentSchema.index({ "meta.isDeleted": 1 });
 
 export const DepartmentModel = model<Department>("Department", DepartmentSchema);
