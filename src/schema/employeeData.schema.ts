@@ -13,12 +13,12 @@ import {
 
 export const EmployeeDataSchema = new Schema<EmployeeData>(
   {
-    basic: { type: EmployeeBasicSchema, required: true },
-    job: { type: JobDetailSchema, required: true },
-    compensation: { type: CompensationSchema, required: true },
+    basic: EmployeeBasicSchema,
+    job: JobDetailSchema,
+    compensation: CompensationSchema,
     bank: BankDetailSchema,
     legal: LegalSchema,
-    address: { type: AddressSchema, required: true },
+    address: AddressSchema,
     leave: LeaveInfoSchema,
     documents: [DocumentSchema],
   },
