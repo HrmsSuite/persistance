@@ -18,5 +18,3 @@ EmployeeModelSchema.index({ "meta.isDeleted": 1 });
 EmployeeModelSchema.index({ "data.job.department": 1 });
 EmployeeModelSchema.index({ "data.job.designation": 1 });
 EmployeeModelSchema.index({ "data.job.employeeStatus": 1 });
-EmployeeModelSchema.index({ "data.basic.email": 1 }, { unique: true });
-EmployeeModelSchema.index({ "data.basic.employeeId": 1 }, { unique: true });
