@@ -4,6 +4,15 @@ export type EmploymentType = 'Full-time' | 'Part-time' | 'Contract' | 'Intern';
 export type EmployeeStatus = 'Active' | 'Inactive' | 'On Leave' | 'Terminated';
 export type Gender = 'Male' | 'Female' | 'Other';
 export type PayFrequency = 'Monthly' | 'Bi-weekly';
+export type DocumentType =
+  | "Aadhaar"
+  | "PAN"
+  | "Experience Letter"
+  | "Conduct Certificate"
+  | "Resume"
+  | "Offer Letter"
+  | "Passport Photo"
+  | "Bank Passbook";
 
 export interface EmployeeBasic {
   employeeId: string;
@@ -63,9 +72,10 @@ export interface LeaveInfo {
 }
 
 export interface Document {
+  type: DocumentType;
   name: string;
   url: string;
-  uploadedAt: Date;
+  uploadedAt?: Date;
 }
 
   export interface EmployeeData {
