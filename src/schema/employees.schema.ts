@@ -40,5 +40,4 @@ EmployeeModelSchema.index({ companyId: 1, "data.basic.email": 1 }, { unique: tru
 EmployeeModelSchema.index({ companyId: 1, "data.payroll.payrollGroupId": 1 });
 EmployeeModelSchema.index({ companyId: 1, "data.job.shiftId": 1 });
 EmployeeModelSchema.index({ companyId: 1, "data.job.employeeStatus": 1, "data.job.fullAndFinalSettled": 1 });
-
-export const EmployeeModel = model<Employee>("Employee", EmployeeModelSchema);
+ 
