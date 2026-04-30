@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 
-// ─── Existing Enums (unchanged) ───────────────────────────────────────────────
+//Enums 
 
 export type EmploymentType = "Full-time" | "Part-time" | "Contract" | "Intern";
 export type EmployeeStatus = "Active" | "Inactive" | "On Leave" | "Terminated";
@@ -16,13 +16,9 @@ export type DocumentType =
   | "Passport Photo"
   | "Bank Passbook";
 
-// ─── New Enums ────────────────────────────────────────────────────────────────
-
 export type AttendanceMode = "Manual" | "Biometric" | "GPS" | "Hybrid";
 export type TaxRegime = "Old" | "New";
 export type PayslipPreference = "Email" | "Download" | "Both";
-
-// ─── Existing Interfaces (unchanged) ─────────────────────────────────────────
 
 export interface EmployeeBasic {
   employeeId: string;
@@ -36,8 +32,7 @@ export interface EmployeeBasic {
   profilePhotoUrl?: string;
 }
 
-export interface JobDetails {
-  // ── existing ──
+export interface JobDetails { 
   designation: Types.ObjectId;
   department: Types.ObjectId;
   employmentType: EmploymentType;
@@ -45,24 +40,19 @@ export interface JobDetails {
   reportingManagerId?: Types.ObjectId;
   workLocation: string;
   employeeStatus: EmployeeStatus;
-
-  // ── new: shift & attendance ──
+ 
   shiftId?: Types.ObjectId;
   weeklyOff?: string[];           // e.g. ["Saturday", "Sunday"]
   attendanceMode?: AttendanceMode;
-
-  // ── new: exit & final settlement ──
+ 
   dateOfExit?: Date;
   exitReason?: string;
   fullAndFinalSettled?: boolean;
 }
 
-export interface Compensation {
-  // ── existing ──
+export interface Compensation { 
   salary: number;
-  payFrequency: PayFrequency;
-
-  // ── new: versioned salary structure ──
+  payFrequency: PayFrequency; 
   salaryStructure?: SalaryStructure;   // current active breakdown
   salaryHistory?: SalaryStructure[];   // past structures for payslip accuracy
 }
@@ -112,8 +102,6 @@ export interface Document {
   uploadedAt?: Date;
 }
 
-// ─── New Interfaces ───────────────────────────────────────────────────────────
-
 export interface PayrollInfo {
   payrollId?: string;              // unique ID inside payroll system
   payrollGroupId?: Types.ObjectId; // batch / cycle group
@@ -134,13 +122,10 @@ export interface TaxInfo {
 export interface AuditEntry {
   changedBy?: Types.ObjectId;
   changedAt?: Date;
-  changes?: string; // JSON diff or human-readable summary
+  changes?: string;  
 }
 
-// ─── Root shapes (extended, backward-compatible) ───────────────────────────
-
-export interface EmployeeData {
-  // ── existing ──
+export interface EmployeeData { 
   basic: EmployeeBasic;
   job: JobDetails;
   compensation: Compensation;
@@ -148,9 +133,7 @@ export interface EmployeeData {
   legal?: LegalDetails;
   address: Address;
   leave?: LeaveInfo;
-  documents?: Document[];
-
-  // ── new ──
+  documents?: Document[]; 
   payroll?: PayrollInfo;
   attendancePolicy?: AttendancePolicy;
   tax?: TaxInfo;
@@ -162,7 +145,7 @@ export interface Employee {
   meta: {
     version: number;
     isDeleted?: boolean;
-    auditTrail?: AuditEntry[]; // new
+    auditTrail?: AuditEntry[]; 
   };
   createdAt: Date;
   updatedAt: Date;

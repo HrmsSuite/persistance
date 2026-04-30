@@ -16,8 +16,6 @@ const payFreq: PayFrequency[] = ["Monthly", "Bi-weekly"];
 const taxRegimes: TaxRegime[] = ["Old", "New"];
 const payslipPrefs: PayslipPreference[] = ["Email", "Download", "Both"];
 
-// ── existing (unchanged) ──────────────────────────────────────────────────────
-
 export const BankDetailSchema = new Schema<BankDetails>(
   {
     bankName: { type: String, required: true, trim: true },
@@ -37,8 +35,6 @@ export const LegalSchema = new Schema<LegalDetails>(
   { _id: false },
 );
 
-// ── new: salary structure sub-schema (used inside Compensation) ──────────────
-
 export const SalaryStructureSchema = new Schema<SalaryStructure>(
   {
     basic: { type: Number, required: true, min: 0 },
@@ -50,23 +46,17 @@ export const SalaryStructureSchema = new Schema<SalaryStructure>(
   { _id: false },
 );
 
-// ── updated Compensation (salary + payFrequency kept, structure added) ────────
-
 export const CompensationSchema = new Schema<Compensation>(
-  {
-    // existing
+  { 
     salary: { type: Number, required: true, min: 0 },
-    payFrequency: { type: String, enum: payFreq, required: true },
-
-    // new
+    payFrequency: { type: String, enum: payFreq, required: true }, 
     salaryStructure: { type: SalaryStructureSchema },
     salaryHistory: { type: [SalaryStructureSchema], default: [] },
   },
   { _id: false },
 );
 
-// ── new: payroll identity ────────────────────────────────────────────────────
-
+ 
 export const PayrollInfoSchema = new Schema<PayrollInfo>(
   {
     payrollId: { type: String, trim: true },
@@ -76,7 +66,6 @@ export const PayrollInfoSchema = new Schema<PayrollInfo>(
   { _id: false },
 );
 
-// ── new: attendance policy ───────────────────────────────────────────────────
 
 export const AttendancePolicySchema = new Schema<AttendancePolicy>(
   {
@@ -87,8 +76,7 @@ export const AttendancePolicySchema = new Schema<AttendancePolicy>(
   { _id: false },
 );
 
-// ── new: tax info ────────────────────────────────────────────────────────────
-
+ 
 export const TaxInfoSchema = new Schema<TaxInfo>(
   {
     taxRegime: { type: String, enum: taxRegimes },
