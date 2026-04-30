@@ -1,15 +1,22 @@
 import { Schema } from "mongoose";
-import { BankDetails, Compensation, LegalDetails, PayFrequency } from "../types";
+import {
+  BankDetails,
+  Compensation,
+  LegalDetails,
+  PayFrequency,
+  SalaryStructure,
+  PayrollInfo,
+  AttendancePolicy,
+  TaxInfo,
+  TaxRegime,
+  PayslipPreference,
+} from "../types";
 
 const payFreq: PayFrequency[] = ["Monthly", "Bi-weekly"];
+const taxRegimes: TaxRegime[] = ["Old", "New"];
+const payslipPrefs: PayslipPreference[] = ["Email", "Download", "Both"];
 
-export const CompensationSchema = new Schema<Compensation>(
-  {
-    salary: { type: Number, required: true, min: 0 },
-    payFrequency: { type: String, enum: payFreq, required: true },
-  },
-  { _id: false },
-);
+// ── existing (unchanged) ──────────────────────────────────────────────────────
 
 export const BankDetailSchema = new Schema<BankDetails>(
   {
@@ -26,6 +33,66 @@ export const LegalSchema = new Schema<LegalDetails>(
     panNumber: { type: String, trim: true, uppercase: true },
     aadhaarNumber: { type: String, trim: true },
     uan: { type: String, trim: true },
+  },
+  { _id: false },
+);
+
+// ── new: salary structure sub-schema (used inside Compensation) ──────────────
+
+export const SalaryStructureSchema = new Schema<SalaryStructure>(
+  {
+    basic: { type: Number, required: true, min: 0 },
+    hra: { type: Number, required: true, min: 0 },
+    allowances: { type: Number, required: true, min: 0 },
+    gross: { type: Number, required: true, min: 0 },
+    effectiveFrom: { type: Date, required: true },
+  },
+  { _id: false },
+);
+
+// ── updated Compensation (salary + payFrequency kept, structure added) ────────
+
+export const CompensationSchema = new Schema<Compensation>(
+  {
+    // existing
+    salary: { type: Number, required: true, min: 0 },
+    payFrequency: { type: String, enum: payFreq, required: true },
+
+    // new
+    salaryStructure: { type: SalaryStructureSchema },
+    salaryHistory: { type: [SalaryStructureSchema], default: [] },
+  },
+  { _id: false },
+);
+
+// ── new: payroll identity ────────────────────────────────────────────────────
+
+export const PayrollInfoSchema = new Schema<PayrollInfo>(
+  {
+    payrollId: { type: String, trim: true },
+    payrollGroupId: { type: Schema.Types.ObjectId, ref: "PayrollGroup" },
+    payslipPreference: { type: String, enum: payslipPrefs },
+  },
+  { _id: false },
+);
+
+// ── new: attendance policy ───────────────────────────────────────────────────
+
+export const AttendancePolicySchema = new Schema<AttendancePolicy>(
+  {
+    workingHoursPerDay: { type: Number, min: 0, max: 24 },
+    halfDayThreshold: { type: Number, min: 0 },
+    overtimeEligible: { type: Boolean, default: false },
+  },
+  { _id: false },
+);
+
+// ── new: tax info ────────────────────────────────────────────────────────────
+
+export const TaxInfoSchema = new Schema<TaxInfo>(
+  {
+    taxRegime: { type: String, enum: taxRegimes },
+    taxDeclarationSubmitted: { type: Boolean, default: false },
   },
   { _id: false },
 );
