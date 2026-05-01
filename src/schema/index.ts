@@ -6,3 +6,4 @@ export * from "./pay.schema";
 export * from "./employeeData.schema";
 export * from "./employee.schema";
 export * from "./employees.schema";
+export * from "./shiftData.schema";

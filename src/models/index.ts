@@ -4,3 +4,4 @@ export * from "./designation.model";
 export * from "./city.model";
 export * from "./bank.model";
 export * from "./company.model";
+export * from "./Shiftdata.models"

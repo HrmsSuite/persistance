@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 import { Company } from "../types";
 
 const companySchema = new mongoose.Schema<Company>(
-  {
-    //existing
+  { 
     name: {
       type: String,
       required: true,
@@ -20,9 +19,7 @@ const companySchema = new mongoose.Schema<Company>(
       type: String,
       required: true,
       minlength: 6,
-    },
-
-    // basic info
+    }, 
     phone: { type: String, trim: true },
     industry: { type: String, trim: true },
     companySize: { type: String, trim: true },
