@@ -60,7 +60,7 @@ export const CompensationSchema = new Schema<Compensation>(
 export const PayrollInfoSchema = new Schema<PayrollInfo>(
   {
     payrollId: { type: String, trim: true },
-    payrollGroupId: { type: Schema.Types.ObjectId, ref: "PayrollGroup" },
+    payrollGroupId: { type: String },
     payslipPreference: { type: String, enum: payslipPrefs },
   },
   { _id: false },
