@@ -18,12 +18,12 @@ export const ShiftSchema = new Schema<ShiftData>(
       },
 
       startTime: {
-        type: Date,
+        type: String,
         required: true,
       },
 
       endTime: {
-        type: Date,
+        type: String,
         required: true,
       },
 

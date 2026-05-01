@@ -2,8 +2,8 @@ import { Types } from "mongoose";
 
 export interface Shift {
   name: string;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
   workingHours: number;
   halfDayThreshold: number;
   weeklyOff: string[];
