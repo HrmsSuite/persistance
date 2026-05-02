@@ -120,6 +120,7 @@ export interface TaxInfo {
 }
 
 export interface AuditEntry {
+  action: "created" | "updated" | "deleted";
   changedBy?: Types.ObjectId;
   changedAt?: Date;
   changes?: string;  
