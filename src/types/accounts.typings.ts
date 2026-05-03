@@ -9,7 +9,7 @@ export interface Accounts {
   isActive: boolean;
   role: "employee";
   isPasswordChanged?: boolean;  
-  passwordChangedAt?: Date;
+  passwordChangedAt?: Date | null;
 }
 
 export interface AccountDetails extends Accounts {
