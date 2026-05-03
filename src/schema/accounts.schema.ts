@@ -20,6 +20,7 @@ const AccountsSchema = new Schema<AccountDetails>(
       type: String,
       required: true,
     },
+    tempPassword: { type: String, default: null },
     isActive: {
       type: Boolean,
       default: false,

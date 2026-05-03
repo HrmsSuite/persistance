@@ -4,6 +4,7 @@ export interface Accounts {
   employee: Types.ObjectId;
   email: string;
   password: string;
+  tempPassword?: string | null;
   isActive: boolean;
   role: "employee";
   isPasswordChanged?: boolean;  
