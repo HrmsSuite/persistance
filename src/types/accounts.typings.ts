@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 
 export interface Accounts {
+  companyId:Types.ObjectId;
   employee: Types.ObjectId;
   email: string;
   password: string;

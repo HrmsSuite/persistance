@@ -3,6 +3,11 @@ import { AccountDetails } from "../types";
 
 const AccountsSchema = new Schema<AccountDetails>(
   {
+    companyId: {
+      type: Schema.Types.ObjectId,
+      ref: "Company",
+      required: true, 
+    },
     employee: {
       type: Schema.Types.ObjectId,
       ref: "Employee",
@@ -49,7 +54,8 @@ const AccountsSchema = new Schema<AccountDetails>(
   },
   { timestamps: true },
 );
-
+//index:
+AccountsSchema.index({ companyId: 1, employee: 1 });
 export const AccountsModel = mongoose.model<AccountDetails>(
   "Accounts",
   AccountsSchema,
