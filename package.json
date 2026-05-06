@@ -1,6 +1,6 @@
 {
   "name": "@hrmssuite/persistence",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "Shared persistence layer for HRMS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
