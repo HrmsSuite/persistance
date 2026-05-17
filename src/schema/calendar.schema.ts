@@ -135,11 +135,11 @@ export const CalendarEventSchema = new Schema<ICalendarEvent>(
       default: true,
     },
     startTime: {
-      type: Date,
+      type: String,
       default: null,
     },
     endTime: {
-      type: Date,
+      type: String,
       default: null,
     },
     description: {

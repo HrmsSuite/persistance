@@ -45,9 +45,9 @@ export interface ICalendarEvent {
   endDate: Date;
   isFullDay: boolean;
   /** Required when isFullDay === false */
-  startTime?: Date;
+  startTime?: string;
   /** Required when isFullDay === false */
-  endTime?: Date;
+  endTime?: string;
   description?: string;
   classification: IClassification;
   scope: IScope;
