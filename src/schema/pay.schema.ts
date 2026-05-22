@@ -5,8 +5,7 @@ import {
   LegalDetails,
   PayFrequency,
   SalaryStructure,
-  PayrollInfo,
-  AttendancePolicy,
+  PayrollInfo, 
   TaxInfo,
   TaxRegime,
   PayslipPreference,
@@ -62,16 +61,6 @@ export const PayrollInfoSchema = new Schema<PayrollInfo>(
     payrollId: { type: String, trim: true },
     payrollGroupId: { type: String },
     payslipPreference: { type: String, enum: payslipPrefs },
-  },
-  { _id: false },
-);
-
-
-export const AttendancePolicySchema = new Schema<AttendancePolicy>(
-  {
-    workingHoursPerDay: { type: Number, min: 0, max: 24 },
-    halfDayThreshold: { type: Number, min: 0 },
-    overtimeEligible: { type: Boolean, default: false },
   },
   { _id: false },
 );

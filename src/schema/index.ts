@@ -1,5 +1,4 @@
 export * from "./address.schema";
-export * from "./leave.schema";
 export * from "./document.schema";
 export * from "./jobDetails.schema";
 export * from "./pay.schema";
@@ -11,3 +10,4 @@ export * from "./accounts.schema";
 export * from "./calendar.schema";
 export * from "./leavepolicy.schema";
 export * from "./leaverequest.schema";
+export * from "./leavebalance.schema"

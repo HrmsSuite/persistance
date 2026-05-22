@@ -40,11 +40,9 @@ export interface JobDetails {
   reportingManagerId?: Types.ObjectId;
   workLocation: string;
   employeeStatus: EmployeeStatus;
- 
   shiftId?: Types.ObjectId;
-  weeklyOff?: string[];           // e.g. ["Saturday", "Sunday"]
   attendanceMode?: AttendanceMode;
- 
+  leavepolicy:Types.ObjectId;
   dateOfExit?: Date;
   exitReason?: string;
   fullAndFinalSettled?: boolean;
@@ -89,12 +87,6 @@ export interface Address {
   postalCode: string;
 }
 
-export interface LeaveInfo {
-  leaveBalance: number;
-  sickLeaveBalance?: number;
-  casualLeaveBalance?: number;
-}
-
 export interface Document {
   type: DocumentType;
   name: string;
@@ -106,12 +98,6 @@ export interface PayrollInfo {
   payrollId?: string;              // unique ID inside payroll system
   payrollGroupId?: Types.ObjectId; // batch / cycle group
   payslipPreference?: PayslipPreference;
-}
-
-export interface AttendancePolicy {
-  workingHoursPerDay?: number;  // e.g. 8
-  halfDayThreshold?: number;    // hours threshold to count as half-day
-  overtimeEligible?: boolean;
 }
 
 export interface TaxInfo {
@@ -133,10 +119,8 @@ export interface EmployeeData {
   bank?: BankDetails;
   legal?: LegalDetails;
   address: Address;
-  leave?: LeaveInfo;
   documents?: Document[]; 
-  payroll?: PayrollInfo;
-  attendancePolicy?: AttendancePolicy;
+  payroll?: PayrollInfo; 
   tax?: TaxInfo;
 }
 

@@ -9,3 +9,4 @@ export * from "./calendar.typings";
 export * from "./constant.typings";
 export * from "./leavepolicy.typings";
 export * from "./leaverequest.typings";
+export * from "./leavebalance.typings"
