@@ -42,7 +42,7 @@ export interface JobDetails {
   employeeStatus: EmployeeStatus;
   shiftId?: Types.ObjectId;
   attendanceMode?: AttendanceMode;
-  leavepolicy:Types.ObjectId;
+  leavepolicy:Types.ObjectId[];
   dateOfExit?: Date;
   exitReason?: string;
   fullAndFinalSettled?: boolean;
