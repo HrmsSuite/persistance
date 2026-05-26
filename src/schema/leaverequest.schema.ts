@@ -93,9 +93,9 @@ export const LeaveRequestSchema = new Schema<ILeaveRequest>(
     },
 
     // ── Leave Details
-    leaveTypeName: {
-      type: String,
-      enum: LEAVE_TYPE_NAMES,
+    leavePolicyId: {
+      type: Schema.Types.ObjectId,
+      ref: "Leavepolicy",
       required: true,
     },
     startDate: {
@@ -186,4 +186,4 @@ LeaveRequestSchema.index({ companyId: 1, status: 1, currentLevel: 1 });
 LeaveRequestSchema.index({ companyId: 1, startDate: 1, endDate: 1, status: 1 });
 
 // Leave type wise reporting
-LeaveRequestSchema.index({ companyId: 1, leaveTypeName: 1, status: 1 });
+LeaveRequestSchema.index({ companyId: 1, Leavepolicy: 1, status: 1 });

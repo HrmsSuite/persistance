@@ -24,7 +24,7 @@ export interface ILeaveRequest {
   managerId: Types.ObjectId;            // from employee profile
 
   // Leave details
-  leaveTypeName: (typeof LEAVE_TYPE_NAMES)[number];
+  leavePolicyId: Types.ObjectId
   startDate: Date;
   endDate: Date;
   totalDays: number;                    // computed — working days only
