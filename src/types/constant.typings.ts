@@ -48,7 +48,7 @@ export const GENDER_ELIGIBILITY = [
   "all",
 ] as const;
 
-export const APPROVAL_LEVELS = [1, 2] as const;
+export const APPROVAL_LEVELS = [1, 2,null] as const;
 
 export const LEAVE_STATUS = [
   "pending",
