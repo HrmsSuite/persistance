@@ -38,7 +38,7 @@ export interface ILeaveRequest {
   // Status & Approval
   status: (typeof LEAVE_STATUS)[number];
   approvalChain: IApprovalStep[];
-  currentLevel: 1 | 2;                  
+  currentLevel: 1 | 2 | null;                  
 
   // Handover
   handoverEmployeeId?: Types.ObjectId;
