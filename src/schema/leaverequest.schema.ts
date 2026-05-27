@@ -6,7 +6,7 @@ import {
   APPROVAL_STEP_STATUS,
 } from "../types/constant.typings";
 import { ILeaveRequest } from "../types";
-// APPROVAL STEP SUB SCHEMA 
+// APPROVAL STEP SUB SCHEMA
 const ApprovalStepSchema = new Schema(
   {
     level: {
@@ -42,8 +42,8 @@ const ApprovalStepSchema = new Schema(
   },
   { _id: false },
 );
- 
-// AUDIT SUB SCHEMA 
+
+// AUDIT SUB SCHEMA
 
 const AuditSchema = new Schema(
   {
@@ -70,8 +70,8 @@ const AuditSchema = new Schema(
   },
   { _id: false },
 );
- 
-// LEAVE REQUEST SCHEMA 
+
+// LEAVE REQUEST SCHEMA
 
 export const LeaveRequestSchema = new Schema<ILeaveRequest>(
   {
@@ -147,9 +147,8 @@ export const LeaveRequestSchema = new Schema<ILeaveRequest>(
     },
     currentLevel: {
       type: Number,
-      enum: [1, 2],
-      required: true,
-      default: 1,
+      required: false,
+      default: null,
     },
 
     // ── Handover
@@ -170,8 +169,8 @@ export const LeaveRequestSchema = new Schema<ILeaveRequest>(
     versionKey: false,
   },
 );
- 
-// INDEXES 
+
+// INDEXES
 
 // Employee leave history
 LeaveRequestSchema.index({ companyId: 1, employeeId: 1, startDate: -1 });
