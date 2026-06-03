@@ -71,6 +71,39 @@ const AuditSchema = new Schema(
   { _id: false },
 );
 
+const ActivityLogSchema = new Schema(
+  {
+    action: {
+      type: String,
+      enum: [
+        "created",
+        "manager_approved",
+        "admin_approved",
+        "rejected",
+        "withdrawn",
+        "cancelled",
+      ],
+      required: true,
+    },
+    performedBy: {
+      type: Schema.Types.ObjectId,
+      ref: "Employee",
+      required: true,
+    },
+    performedAt: {
+      type: Date,
+      required: true,
+      default: () => new Date(),
+    },
+    remarks: {
+      type: String,
+      trim: true,
+      default: null,
+    },
+  },
+  { _id: false },
+);
+
 // LEAVE REQUEST SCHEMA
 
 export const LeaveRequestSchema = new Schema<ILeaveRequest>(
@@ -128,6 +161,11 @@ export const LeaveRequestSchema = new Schema<ILeaveRequest>(
       required: true,
       trim: true,
     },
+    cancelReason: {
+      type: String,
+      trim: true,
+      default: null,
+    },
     attachmentUrl: {
       type: String,
       default: null,
@@ -149,6 +187,12 @@ export const LeaveRequestSchema = new Schema<ILeaveRequest>(
       type: Number,
       required: false,
       default: null,
+    },
+
+    // ── Activity Log
+    activityLog: {
+      type: [ActivityLogSchema],
+      default: [],
     },
 
     // ── Handover

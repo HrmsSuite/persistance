@@ -5,11 +5,11 @@ import {
   APPROVAL_ROLES,
   APPROVAL_STEP_STATUS,
 } from "./constant.typings";
- 
-// APPROVAL STEP 
+
+// APPROVAL STEP
 export interface IApprovalStep {
   level: 1 | 2;
-  role: (typeof APPROVAL_ROLES)[number];        // "manager" | "admin"
+  role: (typeof APPROVAL_ROLES)[number]; // "manager" | "admin"
   approverId: Types.ObjectId;
   status: (typeof APPROVAL_STEP_STATUS)[number]; // "pending" | "approved" | "rejected"
   remarks?: string;
@@ -20,28 +20,32 @@ export interface IApprovalStep {
 export interface ILeaveRequest {
   // Identity
   companyId: Types.ObjectId;
-  employeeId: Types.ObjectId;           // who applied
-  managerId: Types.ObjectId;            // from employee profile
+  employeeId: Types.ObjectId; // who applied
+  managerId: Types.ObjectId; // from employee profile
 
   // Leave details
-  leavePolicyId: Types.ObjectId
+  leavePolicyId: Types.ObjectId;
   startDate: Date;
   endDate: Date;
-  totalDays: number;                    // computed — working days only
-  isHalfDay: boolean;
+  totalDays: number; // computed — working days only
+  isHalfDay?: boolean;
   halfDaySession?: "morning" | "afternoon"; // required if isHalfDay = true
 
   // Supporting info
   reason: string;
-  attachmentUrl?: string;               // medical cert for SL
+  attachmentUrl?: string; // medical cert for SL
+  cancelReason?: string | null;
 
   // Status & Approval
   status: (typeof LEAVE_STATUS)[number];
   approvalChain: IApprovalStep[];
-  currentLevel: 1 | 2 | null;                  
+  currentLevel: 1 | 2 | null;
 
   // Handover
   handoverEmployeeId?: Types.ObjectId;
+
+  // Activity History
+  activityLog: ILeaveRequestActivity[];
 
   // Audit
   audit: ILeaveRequestAudit;
@@ -52,4 +56,19 @@ export interface ILeaveRequestAudit {
   createdAt: Date;
   updatedBy: Types.ObjectId;
   updatedAt: Date;
+}
+
+export interface ILeaveRequestActivity {
+  action:
+    | "created"
+    | "manager_approved"
+    | "admin_approved"
+    | "rejected"
+    | "withdrawn"
+    | "cancelled"
+    | "reopened";
+
+  performedBy: Types.ObjectId;
+  performedAt: Date;
+  remarks?: string;
 }
