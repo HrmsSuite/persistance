@@ -11,3 +11,4 @@ export * from "./calendar.schema";
 export * from "./leavepolicy.schema";
 export * from "./leaverequest.schema";
 export * from "./leavebalance.schema"
+export * from "./teams.schema"

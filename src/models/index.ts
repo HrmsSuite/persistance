@@ -9,3 +9,4 @@ export * from "./calendar.model";
 export * from "./leavepolicy.model";
 export * from "./leaverequest.model"
 export * from "./leavebalance.model"
+export * from "./teams.model"
