@@ -69,3 +69,7 @@ export const teamsSchema = new Schema<ITeam>(
 
 teamsSchema.index({ companyId: 1 });
 teamsSchema.index({ departmentId: 1 });
+teamsSchema.index(
+  { companyId: 1, reportingManagerId: 1 },
+  { unique: true }
+);
