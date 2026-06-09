@@ -53,6 +53,10 @@ export const ShiftSchema = new Schema<ShiftData>(
         type: Number,
         default: 0,
       },
+      overtimeAfterMinutes: {
+        type: Number,
+        default: 0,
+      },
 
       isNightShift: {
         type: Boolean,

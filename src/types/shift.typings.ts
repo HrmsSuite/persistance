@@ -10,6 +10,7 @@ export interface Shift {
   overtimeEligible: boolean;
   gracePeriodMinutes: number;
   isNightShift: boolean;
+  overtimeAfterMinutes?: number;
   breakDurationMinutes: number;
   isActive: boolean;
 }

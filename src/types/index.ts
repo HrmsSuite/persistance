@@ -9,5 +9,9 @@ export * from "./calendar.typings";
 export * from "./constant.typings";
 export * from "./leavepolicy.typings";
 export * from "./leaverequest.typings";
-export * from "./leavebalance.typings"
-export * from "./teams.typings"
+export * from "./leavebalance.typings";
+export * from "./teams.typings";
+export * from "./attendace_events.typings";
+export * from "./attendance_daily.typings";
+export * from "./attendance_regularizations.typings";
+export * from "./shared.typings";

@@ -7,6 +7,9 @@ export * from "./company.model";
 export * from "./Shiftdata.models";
 export * from "./calendar.model";
 export * from "./leavepolicy.model";
-export * from "./leaverequest.model"
-export * from "./leavebalance.model"
-export * from "./teams.model"
+export * from "./leaverequest.model";
+export * from "./leavebalance.model";
+export * from "./teams.model";
+export * from "./attendance_daily.model";
+export * from "./attendance_events.model";
+export * from "./attendance_regularize.model";

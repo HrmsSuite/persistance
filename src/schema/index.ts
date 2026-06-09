@@ -12,3 +12,6 @@ export * from "./leavepolicy.schema";
 export * from "./leaverequest.schema";
 export * from "./leavebalance.schema"
 export * from "./teams.schema"
+export * from "./attendance_daily.schema"
+export * from "./attendance_events.schema"
+export * from "./attendance_regularize.schema"
