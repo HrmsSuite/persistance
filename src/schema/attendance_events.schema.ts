@@ -86,4 +86,9 @@ export const AttendanceEventSchema = new Schema<IAttendanceEvents>(
     versionKey: false,
   },
 );
-AttendanceEventSchema.index({ companyId: 1, employeeId: 1, attendanceDate: 1 });
+AttendanceEventSchema.index({
+  companyId: 1,
+  employeeId: 1,
+  attendanceDate: 1,
+  eventTime: 1,
+});
