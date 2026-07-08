@@ -37,7 +37,10 @@ export interface IAttendanceDaily {
   status: AttendanceStatus;
 
   regularized: boolean;
-
+  isLate: boolean; 
+  effectiveMinutes: number; 
+  wasAutoPunchOut: boolean; 
+  notes: string | null; 
   sourceSummary: AttendanceSource[];
 
   createdAt: Date;

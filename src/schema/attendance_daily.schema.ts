@@ -34,8 +34,7 @@ export const AttendanceDailySchema = new Schema<IAttendanceDaily>(
       ref: "Employee",
       required: true,
       index: true,
-    },
-
+    }, 
     attendanceDate: { type: Date, required: true, index: true },
     payableDayFraction: {
       type: Number,
@@ -55,7 +54,10 @@ export const AttendanceDailySchema = new Schema<IAttendanceDaily>(
     lateMinutes: { type: Number, required: true, min: 0, default: 0 },
     earlyExitMinutes: { type: Number, required: true, min: 0, default: 0 },
     totalPunches: { type: Number, required: true, min: 0, default: 0 },
-
+    isLate: { type: Boolean, required: true, default: false },
+    effectiveMinutes: { type: Number, required: true, min: 0, default: 0 },
+    wasAutoPunchOut: { type: Boolean, required: true, default: false },
+    notes: { type: String, default: null },
     status: {
       type: String,
       enum: attendanceStatuses,
