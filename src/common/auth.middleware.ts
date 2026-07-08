@@ -5,6 +5,7 @@ export interface Payload {
   id: string;
   role?: string;
   companyId: string;
+  employeeId?: string;
 }
 
 declare global {
