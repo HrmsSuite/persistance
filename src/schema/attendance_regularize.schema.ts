@@ -10,6 +10,7 @@ export const AttendanceRegularizationSchema =
         required: true,
         index: true,
       },
+
       employeeId: {
         type: Schema.Types.ObjectId,
         ref: "Employee",
@@ -17,23 +18,101 @@ export const AttendanceRegularizationSchema =
         index: true,
       },
 
-      attendanceDate: { type: Date, required: true, index: true },
-      requestedCheckIn: { type: Date },
-      requestedCheckOut: { type: Date },
+      attendanceDailyId: {
+        type: Schema.Types.ObjectId,
+        ref: "AttendanceDaily",
+        required: true,
+        index: true,
+      },
 
-      reason: { type: String, required: true, trim: true },
+      attendanceDate: {
+        type: Date,
+        required: true,
+        index: true,
+      },
+
+      currentCheckIn: {
+        type: Date,
+      },
+
+      currentCheckOut: {
+        type: Date,
+      },
+
+      requestedCheckIn: {
+        type: Date,
+      },
+
+      requestedCheckOut: {
+        type: Date,
+      },
+
+      reason: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+
+      regularizationType: {
+        type: String,
+        enum: ["CHECK_IN", "CHECK_OUT", "BOTH", "MISSED_PUNCH"],
+        required: true,
+      },
+
+      requestSource: {
+        type: String,
+        enum: ["WEB", "MOBILE", "ADMIN"],
+        required: true,
+        default: "WEB",
+      },
 
       status: {
         type: String,
-        enum: ["PENDING", "APPROVED", "REJECTED"],
+        enum: ["PENDING", "APPROVED", "REJECTED", "CANCELLED"],
         required: true,
         default: "PENDING",
         index: true,
       },
 
-      approvedBy: { type: Schema.Types.ObjectId, ref: "Employee" },
-      managerRemarks: { type: String, trim: true },
-      approvedAt: { type: Date },
+      reviewedBy: {
+        type: Schema.Types.ObjectId,
+        ref: "Employee",
+      },
+
+      reviewedAt: {
+        type: Date,
+      },
+
+      reviewComments: {
+        type: String,
+        trim: true,
+      },
+
+      approvalHistory: [
+        {
+          action: {
+            type: String,
+            enum: ["SUBMITTED", "APPROVED", "REJECTED", "RESUBMITTED"],
+            required: true,
+          },
+
+          performedBy: {
+            type: Schema.Types.ObjectId,
+            ref: "Employee",
+            required: true,
+          },
+
+          remarks: {
+            type: String,
+            trim: true,
+          },
+
+          performedAt: {
+            type: Date,
+            required: true,
+          },
+        },
+      ],
     },
     {
       timestamps: true,
@@ -41,18 +120,62 @@ export const AttendanceRegularizationSchema =
     },
   );
 
-// One active regularization request per employee per day
-// (does not block re-requests after rejection — enforce that in service layer if needed)
+/**
+ * INDEXES
+ */
+
+// Prevent multiple pending requests for same employee/date
+AttendanceRegularizationSchema.index(
+  {
+    companyId: 1,
+    employeeId: 1,
+    attendanceDate: 1,
+  },
+  {
+    unique: true,
+    partialFilterExpression: {
+      status: "PENDING",
+    },
+  },
+);
+
+// Employee request history
 AttendanceRegularizationSchema.index({
   companyId: 1,
   employeeId: 1,
-  attendanceDate: 1,
-  status: 1,
+  createdAt: -1,
 });
 
-// Manager inbox — fetch all pending requests under a company
+// Employee requests by status
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  employeeId: 1,
+  status: 1,
+  createdAt: -1,
+});
+
+// Admin approval queue
 AttendanceRegularizationSchema.index({
   companyId: 1,
   status: 1,
   createdAt: -1,
+});
+
+// Attendance date reports/search
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  attendanceDate: -1,
+});
+
+// Fast lookup by attendance daily record
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  attendanceDailyId: 1,
+});
+
+// Audit / reviewer reports
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  reviewedBy: 1,
+  reviewedAt: -1,
 });
