@@ -12,4 +12,4 @@ export * from "./leavebalance.model";
 export * from "./teams.model";
 export * from "./attendance_daily.model";
 export * from "./attendance_events.model";
-export * from "./attendance_regularize.model";
+export * from "./regularization_policy.model";
