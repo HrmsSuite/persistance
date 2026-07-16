@@ -16,3 +16,5 @@ export * from "./attendance_daily.typings";
 export * from "./attendance_regularizations.typings";
 export * from "./shared.typings";
 export * from "./regularization_policy.typings";
+export * from "./roles.typings";
+export * from "./workflow.typings";

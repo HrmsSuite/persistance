@@ -39,5 +39,6 @@ EmployeeModelSchema.index({ companyId: 1, "data.basic.employeeId": 1 }, { unique
 EmployeeModelSchema.index({ companyId: 1, "data.basic.email": 1 }, { unique: true });
 EmployeeModelSchema.index({ companyId: 1, "data.payroll.payrollGroupId": 1 });
 EmployeeModelSchema.index({ companyId: 1, "data.job.shiftId": 1 });
+EmployeeModelSchema.index({companyId: 1,"data.job.roleIds": 1,});
 EmployeeModelSchema.index({ companyId: 1, "data.job.employeeStatus": 1, "data.job.fullAndFinalSettled": 1 });
  

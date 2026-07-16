@@ -15,6 +15,7 @@ export const JobDetailSchema = new Schema<JobDetails>(
     workLocation: { type: String, required: true, trim: true },
     employeeStatus: { type: String, enum: empStatus, required: true, default: "Active" },
     shiftId: { type: Schema.Types.ObjectId, ref: "shifts" },
+    roleIds: [{    type: Schema.Types.ObjectId,  ref: "Role",},],
     attendanceMode: { type: String, enum: attendanceModes },
     leavepolicy: [{ type: Schema.Types.ObjectId, ref: "Leavepolicy" },],
     dateOfExit: { type: Date },

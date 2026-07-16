@@ -36,6 +36,7 @@ export interface JobDetails {
   designation: Types.ObjectId;
   department: Types.ObjectId;
   employmentType: EmploymentType;
+  roleIds?: Types.ObjectId[];
   dateOfJoining: Date;
   reportingManagerId?: Types.ObjectId;
   workLocation: string;
