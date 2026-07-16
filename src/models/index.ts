@@ -15,3 +15,4 @@ export * from "./attendance_events.model";
 export * from "./regularization_policy.model";
 export * from "./roles.model";
 export * from "./workflow.model";
+export * from "./permission.model";
