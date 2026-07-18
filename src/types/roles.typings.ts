@@ -12,7 +12,7 @@ export interface IRole {
 
   type: RoleType;
 
-  permissions: Permission[];
+  permissionIds: Types.ObjectId[];
 
   isDefault: boolean;
 

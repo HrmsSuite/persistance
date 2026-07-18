@@ -37,10 +37,12 @@ export const RoleSchema = new Schema<IRole>(
       default: "CUSTOM",
     },
 
-    permissions: {
-      type: [String],
-      default: [],
-    },
+    permissionIds: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Permission",
+      },
+    ],
 
     isDefault: {
       type: Boolean,
