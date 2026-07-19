@@ -107,10 +107,14 @@ export interface TaxInfo {
 }
 
 export interface AuditEntry {
-  action: "created" | "updated" | "deleted";
+   action: "created" | "updated" | "deleted" | "reporting_manager_changed" | "roles_changed";
   changedBy?: Types.ObjectId;
   changedAt?: Date;
-  changes?: string;  
+  changes?: string;
+  changedFields?: string[];
+  diff?: any;
+  before?: any;
+  after?: any;
 }
 
 export interface EmployeeData { 
