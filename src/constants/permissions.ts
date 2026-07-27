@@ -2,7 +2,9 @@ export const PERMISSIONS = {
   EMPLOYEE: {
     CREATE: "employee.create",
     VIEW: "employee.view",
+    VIEW_HIERARCHY: "employee.view.hierarchy",
     UPDATE: "employee.update",
+    UPDATE_HIERARCHY: "employee.update.hierarchy",
     DELETE: "employee.delete",
   },
 
@@ -39,6 +41,7 @@ export const PERMISSIONS = {
     VIEW: "attendance.view",
     UPDATE: "attendance.update",
     EMPLOYEE_VIEW: "attendance.employee.view",
+    VIEW_HIERARCHY: "attendance.view.hierarchy",
     REGULARIZATION_APPROVE: "attendance.regularization.approve",
     REGULARIZATION_EMPLOYEE: "attendance.regularization.employee",
   },
@@ -47,7 +50,9 @@ export const PERMISSIONS = {
     CREATE: "leave.create",
     VIEW: "leave.view",
     EMPLOYEE_VIEW: "leave.employee.view",
+    VIEW_HIERARCHY: "leave.view.hierarchy",
     APPROVE: "leave.approve",
+    APPROVE_HIERARCHY: "leave.approve.hierarchy",
     REJECT: "leave.reject",
   },
 
