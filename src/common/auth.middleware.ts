@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { Permission } from "../constants";
+import { AccessScopeResult } from "../types";
 
 export interface Payload {
   id: string;
@@ -22,6 +23,8 @@ declare global {
     interface Request {
       user?: Payload;
       companyId?: string;
+
+      accessScope?: AccessScopeResult;
     }
   }
 }
