@@ -19,3 +19,4 @@ export * from "./regularization_policy.typings";
 export * from "./roles.typings";
 export * from "./workflow.typings";
 export * from "./permission.types";
+export * from "./accessScope.typings";

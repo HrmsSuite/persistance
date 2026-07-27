@@ -27,8 +27,11 @@ export const PERMISSION_ACTIONS = [
   "REJECT",
   "PROCESS",
   "EXPORT",
+  "SELF",
+  "HIERARCHY",
 ] as const;
-
 
 export type PermissionAction =
   (typeof PERMISSION_ACTIONS)[number];
+
+ 
