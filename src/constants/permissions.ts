@@ -34,17 +34,21 @@ export const PERMISSIONS = {
     DELETE: "workflow.delete",
   },
 
+  ATTENDANCE: {
+    CREATE: "attendance.create",
+    VIEW: "attendance.view",
+    UPDATE: "attendance.update",
+    EMPLOYEE_VIEW: "attendance.employee.view",
+    REGULARIZATION_APPROVE: "attendance.regularization.approve",
+    REGULARIZATION_EMPLOYEE: "attendance.regularization.employee",
+  },
+
   LEAVE: {
     CREATE: "leave.create",
     VIEW: "leave.view",
+    EMPLOYEE_VIEW: "leave.employee.view",
     APPROVE: "leave.approve",
     REJECT: "leave.reject",
-  },
-
-  ATTENDANCE: {
-    VIEW: "attendance.view",
-    REGULARIZATION_APPROVE:
-      "attendance.regularization.approve",
   },
 
   PAYROLL: {
