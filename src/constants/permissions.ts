@@ -1,21 +1,21 @@
 export const PERMISSIONS = {
-EMPLOYEE: {
-  CREATE: "employee.create",
+  EMPLOYEE: {
+    CREATE: "employee.create",
 
-  VIEW: "employee.view",
+    VIEW: "employee.view",
 
-  VIEW_SELF: "employee.view.self",
+    VIEW_SELF: "employee.view.self",
 
-  VIEW_HIERARCHY: "employee.view.hierarchy",
+    VIEW_HIERARCHY: "employee.view.hierarchy",
 
-  UPDATE: "employee.update",
+    UPDATE: "employee.update",
 
-  UPDATE_SELF: "employee.update.self",
+    UPDATE_SELF: "employee.update.self",
 
-  UPDATE_HIERARCHY: "employee.update.hierarchy",
+    UPDATE_HIERARCHY: "employee.update.hierarchy",
 
-  DELETE: "employee.delete",
-},
+    DELETE: "employee.delete",
+  },
 
   DEPARTMENT: {
     CREATE: "department.create",
@@ -45,43 +45,41 @@ EMPLOYEE: {
     DELETE: "workflow.delete",
   },
 
-ATTENDANCE: {
-  CREATE: "attendance.create",
+  ATTENDANCE: {
+    CREATE: "attendance.create",
 
-  VIEW: "attendance.view",
+    VIEW: "attendance.view",
 
-  VIEW_SELF: "attendance.view.self",
+    VIEW_SELF: "attendance.view.self",
 
-  VIEW_HIERARCHY: "attendance.view.hierarchy",
+    VIEW_HIERARCHY: "attendance.view.hierarchy",
 
-  UPDATE: "attendance.update",
+    UPDATE: "attendance.update",
 
-  UPDATE_SELF: "attendance.update.self",
+    UPDATE_SELF: "attendance.update.self",
 
-  UPDATE_HIERARCHY: "attendance.update.hierarchy",
+    UPDATE_HIERARCHY: "attendance.update.hierarchy",
 
-  REGULARIZATION_APPROVE:
-    "attendance.regularization.approve",
+    REGULARIZATION_APPROVE: "attendance.regularization.approve",
 
-  REGULARIZATION_SELF:
-    "attendance.regularization.self",
-},
+    REGULARIZATION_SELF: "attendance.regularization.self",
+  },
 
-LEAVE: {
-  CREATE: "leave.create",
+  LEAVE: {
+    CREATE: "leave.create",
 
-  VIEW: "leave.view",
+    VIEW: "leave.view",
 
-  VIEW_SELF: "leave.view.self",
+    VIEW_SELF: "leave.view.self",
 
-  VIEW_HIERARCHY: "leave.view.hierarchy",
+    VIEW_HIERARCHY: "leave.view.hierarchy",
 
-  APPROVE: "leave.approve",
+    APPROVE: "leave.approve",
 
-  APPROVE_HIERARCHY: "leave.approve.hierarchy",
+    APPROVE_HIERARCHY: "leave.approve.hierarchy",
 
-  REJECT: "leave.reject",
-},
+    REJECT: "leave.reject",
+  },
 
   PAYROLL: {
     VIEW: "payroll.view",

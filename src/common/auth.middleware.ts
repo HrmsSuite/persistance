@@ -29,36 +29,23 @@ declare global {
   }
 }
 
-
 export const authenticate = (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-
   try {
+    const authHeader = req.headers.authorization;
 
-    const authHeader =
-      req.headers.authorization;
-
-
-    if (
-      !authHeader ||
-      !authHeader.startsWith("Bearer ")
-    ) {
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({
         message: "Authorization token missing",
       });
     }
 
+    const token = authHeader.split(" ")[1];
 
-    const token =
-      authHeader.split(" ")[1];
-
-
-    const secret =
-      process.env.ACCESSTOKEN;
-
+    const secret = process.env.ACCESSTOKEN;
 
     if (!secret) {
       return res.status(500).json({
@@ -66,32 +53,18 @@ export const authenticate = (
       });
     }
 
-
-    const payload =
-      jwt.verify(
-        token,
-        secret,
-      ) as Payload;
-
-
+    const payload = jwt.verify(token, secret) as Payload;
 
     req.user = payload;
 
-    req.companyId =
-      payload.companyId;
-
+    req.companyId = payload.companyId;
 
     next();
-
-
   } catch (err) {
-
     return res.status(401).json({
       message: "Invalid or expired token",
     });
-
   }
-
 };
 
 export const authorizeRoles = (...roles: string[]) => {
