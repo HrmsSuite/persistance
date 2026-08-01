@@ -48,7 +48,7 @@ export const GENDER_ELIGIBILITY = [
   "all",
 ] as const;
 
-export const APPROVAL_LEVELS = [1, 2] as const;
+export const APPROVAL_LEVELS = [1, 2, 3, 4, 5] as const;
 
 export const LEAVE_STATUS = [
   "pending",
@@ -60,8 +60,10 @@ export const LEAVE_STATUS = [
 ] as const;
 
 export const APPROVAL_ROLES = [
-  "manager",
-  "admin",
+  "direct_manager",      // employee.data.job.reportingManagerId
+  "manager_of_manager",  // manager’s manager
+  "department_head",     // from department hierarchy
+  "admin",               // HR/admin
 ] as const;
 
 export const APPROVAL_STEP_STATUS = [
