@@ -67,7 +67,8 @@ export interface ILeaveRequestActivity {
     | "rejected"
     | "withdrawn"
     | "cancelled"
-    | "reopened";
+    | "reopened"
+    |"escalated";
 
   performedBy: Types.ObjectId;
   performedAt: Date;

@@ -11,7 +11,7 @@ const ApprovalStepSchema = new Schema(
   {
     level: {
       type: Number,
-      enum: [1, 2],
+      enum: [1, 2, 3, 4, 5],
       required: true,
     },
     role: {
@@ -82,6 +82,7 @@ const ActivityLogSchema = new Schema(
         "rejected",
         "withdrawn",
         "cancelled",
+        "escalated"
       ],
       required: true,
     },

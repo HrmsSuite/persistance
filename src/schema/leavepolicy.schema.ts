@@ -1,7 +1,12 @@
-import { Schema } from "mongoose"; 
-import { APPROVAL_LEVELS, GENDER_ELIGIBILITY, ILeavePolicy, LEAVE_TYPE_NAMES } from "../types";
- 
-// AUDIT SUB SCHEMA 
+import { Schema } from "mongoose";
+import {
+  APPROVAL_LEVELS,
+  GENDER_ELIGIBILITY,
+  ILeavePolicy,
+  LEAVE_TYPE_NAMES,
+} from "../types";
+
+// AUDIT SUB SCHEMA
 
 const AuditSchema = new Schema(
   {
@@ -28,8 +33,8 @@ const AuditSchema = new Schema(
   },
   { _id: false },
 );
- 
-// LEAVE POLICY SCHEMA 
+
+// LEAVE POLICY SCHEMA
 
 export const LeavePolicySchema = new Schema<ILeavePolicy>(
   {
@@ -134,6 +139,21 @@ export const LeavePolicySchema = new Schema<ILeavePolicy>(
       required: true,
       default: 2,
     },
+    approvalConfig: [
+      {
+        level: { type: Number, required: true },
+        type: {
+          type: String,
+          enum: [
+            "direct_manager",
+            "manager_of_manager",
+            "department_head",
+            "admin",
+          ],
+          required: true,
+        },
+      },
+    ],
 
     // ── Meta
     audit: {
@@ -151,14 +171,11 @@ export const LeavePolicySchema = new Schema<ILeavePolicy>(
     versionKey: false,
   },
 );
- 
-// INDEXES 
+
+// INDEXES
 
 // One policy per leave type per company
-LeavePolicySchema.index(
-  { companyId: 1, leaveTypeName: 1 },
-  { unique: true },         
-);
+LeavePolicySchema.index({ companyId: 1, leaveTypeName: 1 }, { unique: true });
 
 // Active policies fetch
 LeavePolicySchema.index({ companyId: 1, isActive: 1 });

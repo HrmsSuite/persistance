@@ -5,6 +5,11 @@ import {
   APPROVAL_LEVELS,
 } from "./constant.typings"; 
 
+export interface IApprovalConfigStep {
+  level: number;
+  type: "direct_manager" | "manager_of_manager" | "department_head" | "admin";
+}
+
 export interface ILeavePolicy {
   // Identity
   companyId: Types.ObjectId;
@@ -34,6 +39,7 @@ export interface ILeavePolicy {
 
   // Approval
   approvalLevels: (typeof APPROVAL_LEVELS)[number];
+  approvalConfig: IApprovalConfigStep[];
 
   // Meta
   audit: IAuditPolicy;
