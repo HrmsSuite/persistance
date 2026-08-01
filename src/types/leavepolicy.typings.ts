@@ -6,7 +6,7 @@ import {
 } from "./constant.typings"; 
 
 export interface IApprovalConfigStep {
-  level: number;
+  level: (typeof APPROVAL_LEVELS)[number];
   type: "direct_manager" | "manager_of_manager" | "department_head" | "admin";
 }
 
