@@ -20,3 +20,5 @@ export * from "./roles.typings";
 export * from "./workflow.typings";
 export * from "./permission.types";
 export * from "./accessScope.typings";
+export * from "./audit.types";
+export * from "./audit.interface";
