@@ -4,11 +4,12 @@ import {
   LEAVE_STATUS,
   APPROVAL_ROLES,
   APPROVAL_STEP_STATUS,
+  APPROVAL_LEVELS,
 } from "./constant.typings";
 
 // APPROVAL STEP
 export interface IApprovalStep {
-  level: 1 | 2;
+  level: (typeof APPROVAL_LEVELS)[number];
   role: (typeof APPROVAL_ROLES)[number]; // "manager" | "admin"
   approverId: Types.ObjectId;
   status: (typeof APPROVAL_STEP_STATUS)[number]; // "pending" | "approved" | "rejected"
@@ -39,7 +40,7 @@ export interface ILeaveRequest {
   // Status & Approval
   status: (typeof LEAVE_STATUS)[number];
   approvalChain: IApprovalStep[];
-  currentLevel: 1 | 2 | null;
+  currentLevel: (typeof APPROVAL_LEVELS)[number] | null;
 
   // Handover
   handoverEmployeeId?: Types.ObjectId;
