@@ -70,4 +70,5 @@ export const APPROVAL_STEP_STATUS = [
   "pending",
   "approved",
   "rejected",
+  "escalated"
 ] as const;
