@@ -23,8 +23,7 @@ export enum RequestSource {
 }
 
 export enum ApprovalAction {
-  SUBMITTED = "SUBMITTED",
-  RESUBMITTED = "RESUBMITTED",
+  SUBMITTED = "SUBMITTED", 
   APPROVED = "APPROVED",
   REJECTED = "REJECTED",
   CANCELLED = "CANCELLED",
