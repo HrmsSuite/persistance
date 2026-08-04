@@ -1,5 +1,11 @@
 import { Schema } from "mongoose";
-import { IAttendanceRegularization } from "../types";
+import {
+  ApprovalAction,
+  IAttendanceRegularization,
+  RegularizationStatus,
+  RegularizationType,
+  RequestSource,
+} from "../types";
 
 export const AttendanceRegularizationSchema =
   new Schema<IAttendanceRegularization>(
@@ -31,6 +37,7 @@ export const AttendanceRegularizationSchema =
         index: true,
       },
 
+      // Existing attendance values
       currentCheckIn: {
         type: Date,
       },
@@ -39,6 +46,7 @@ export const AttendanceRegularizationSchema =
         type: Date,
       },
 
+      // Requested values
       requestedCheckIn: {
         type: Date,
       },
@@ -47,30 +55,51 @@ export const AttendanceRegularizationSchema =
         type: Date,
       },
 
+      regularizationType: {
+        type: String,
+        enum: Object.values(RegularizationType),
+        required: true,
+      },
+
+      requestSource: {
+        type: String,
+        enum: Object.values(RequestSource),
+        default: RequestSource.WEB,
+        required: true,
+      },
+
       reason: {
         type: String,
         required: true,
         trim: true,
       },
 
-      regularizationType: {
-        type: String,
-        enum: ["CHECK_IN", "CHECK_OUT", "BOTH", "MISSED_PUNCH"],
-        required: true,
-      },
+      attachments: [
+        {
+          fileName: {
+            type: String,
+            trim: true,
+          },
 
-      requestSource: {
-        type: String,
-        enum: ["WEB", "MOBILE", "ADMIN"],
+          fileUrl: {
+            type: String,
+            trim: true,
+          },
+        },
+      ],
+
+      approverId: {
+        type: Schema.Types.ObjectId,
+        ref: "Employee",
         required: true,
-        default: "WEB",
+        index: true,
       },
 
       status: {
         type: String,
-        enum: ["PENDING", "APPROVED", "REJECTED", "CANCELLED"],
+        enum: Object.values(RegularizationStatus),
+        default: RegularizationStatus.PENDING,
         required: true,
-        default: "PENDING",
         index: true,
       },
 
@@ -83,7 +112,7 @@ export const AttendanceRegularizationSchema =
         type: Date,
       },
 
-      reviewComments: {
+      reviewRemarks: {
         type: String,
         trim: true,
       },
@@ -92,8 +121,18 @@ export const AttendanceRegularizationSchema =
         {
           action: {
             type: String,
-            enum: ["SUBMITTED", "APPROVED", "REJECTED", "RESUBMITTED"],
+            enum: Object.values(ApprovalAction),
             required: true,
+          },
+
+          previousStatus: {
+            type: String,
+            enum: Object.values(RegularizationStatus),
+          },
+
+          newStatus: {
+            type: String,
+            enum: Object.values(RegularizationStatus),
           },
 
           performedBy: {
@@ -109,10 +148,45 @@ export const AttendanceRegularizationSchema =
 
           performedAt: {
             type: Date,
-            required: true,
+            default: Date.now,
           },
         },
       ],
+
+      isAttendanceUpdated: {
+        type: Boolean,
+        default: false,
+      },
+
+      attendanceUpdatedAt: {
+        type: Date,
+      },
+
+      payrollAffected: {
+        type: Boolean,
+        default: false,
+      },
+
+      createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+      },
+
+      updatedBy: {
+        type: Schema.Types.ObjectId,
+        ref: "Employee",
+      },
+
+      isDeleted: {
+        type: Boolean,
+        default: false,
+        index: true,
+      },
+
+      deletedAt: {
+        type: Date,
+      },
     },
     {
       timestamps: true,
@@ -124,17 +198,20 @@ export const AttendanceRegularizationSchema =
  * INDEXES
  */
 
-// Prevent multiple pending requests for same employee/date
+// Prevent multiple active requests for the same attendance
 AttendanceRegularizationSchema.index(
   {
     companyId: 1,
     employeeId: 1,
-    attendanceDate: 1,
+    attendanceDailyId: 1,
   },
   {
     unique: true,
     partialFilterExpression: {
-      status: "PENDING",
+      status: {
+        $in: ["DRAFT", "PENDING"],
+      },
+      isDeleted: false,
     },
   },
 );
@@ -154,28 +231,55 @@ AttendanceRegularizationSchema.index({
   createdAt: -1,
 });
 
-// Admin approval queue
+// Pending approvals for an approver
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  approverId: 1,
+  status: 1,
+  createdAt: -1,
+});
+
+// Admin reports
 AttendanceRegularizationSchema.index({
   companyId: 1,
   status: 1,
   createdAt: -1,
 });
 
-// Attendance date reports/search
-AttendanceRegularizationSchema.index({
-  companyId: 1,
-  attendanceDate: -1,
-});
-
-// Fast lookup by attendance daily record
+// Attendance lookup
 AttendanceRegularizationSchema.index({
   companyId: 1,
   attendanceDailyId: 1,
 });
 
-// Audit / reviewer reports
+// Attendance date reports
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  attendanceDate: -1,
+});
+
+// Reviewer audit
 AttendanceRegularizationSchema.index({
   companyId: 1,
   reviewedBy: 1,
   reviewedAt: -1,
+});
+
+// Attendance sync jobs
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  isAttendanceUpdated: 1,
+  status: 1,
+});
+
+// Payroll recalculation queue
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  payrollAffected: 1,
+});
+
+// Soft delete queries
+AttendanceRegularizationSchema.index({
+  companyId: 1,
+  isDeleted: 1,
 });
