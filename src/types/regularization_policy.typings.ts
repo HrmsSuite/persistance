@@ -18,8 +18,8 @@ export interface IAttendanceRegularizationPolicy {
   allowMultipleRequestsPerDay: boolean;
   allowAfterPayrollProcessed: boolean;
 
-  // Approval workflow
-  approvalFlow: "REPORTING_MANAGER" | "HR" | "REPORTING_MANAGER_THEN_HR";
+  // Single approver
+  approverId: Types.ObjectId;
 
   // Validation
   attachmentRequired: boolean;

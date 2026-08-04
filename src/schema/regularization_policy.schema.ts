@@ -61,12 +61,11 @@ export const AttendanceRegularizationPolicySchema =
         required: true,
       },
 
-      // Approval workflow
-      approvalFlow: {
-        type: String,
-        enum: ["REPORTING_MANAGER", "HR", "REPORTING_MANAGER_THEN_HR"],
-        default: "REPORTING_MANAGER",
-        required: true,
+      // Single approver
+      approverId: {
+        type: Schema.Types.ObjectId,
+        ref: "Employee",
+        required: true,  
       },
 
       // Validation
