@@ -60,6 +60,9 @@ export const PERMISSIONS = {
 
     UPDATE_HIERARCHY: "attendance.update.hierarchy",
 
+     REGULARIZATION_VIEW_ALL:
+      "attendance.regularization.view.all",
+
     REGULARIZATION_APPROVE: "attendance.regularization.approve",
 
     REGULARIZATION_SELF: "attendance.regularization.self",
