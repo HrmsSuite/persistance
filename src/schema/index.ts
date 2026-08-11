@@ -1,7 +1,7 @@
 export * from "./address.schema";
 export * from "./document.schema";
 export * from "./jobDetails.schema";
-export * from "./pay.schema";
+// export * from "./pay.schema";
 export * from "./employeeData.schema";
 export * from "./employee.schema";
 export * from "./employees.schema";
@@ -20,3 +20,7 @@ export * from "./roles.schema"
 export * from "./workflow.schema"
 export * from "./permission.schema"
 export * from "./audit.schema"
+export * from "./SalaryComponentSchema.schema"
+export * from "./salaryStructure.schema"
+export * from "./employeeSalary.schema"
+export * from "./salaryAuditLog.schema"

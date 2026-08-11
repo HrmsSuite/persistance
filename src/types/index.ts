@@ -22,3 +22,7 @@ export * from "./permission.types";
 export * from "./accessScope.typings";
 export * from "./audit.types";
 export * from "./audit.interface";
+export * from "./salaryComponent.types";
+export * from "./SalaryStructureComponent.types";
+export * from "./employeeSalary.types";
+export * from "./salaryAuditLog.types";

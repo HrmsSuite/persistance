@@ -1,11 +1,10 @@
 import { Types } from "mongoose";
 
-//Enums 
+//Enums
 
 export type EmploymentType = "Full-time" | "Part-time" | "Contract" | "Intern";
 export type EmployeeStatus = "Active" | "Inactive" | "On Leave" | "Terminated";
 export type Gender = "Male" | "Female" | "Other";
-export type PayFrequency = "Monthly" | "Bi-weekly";
 export type DocumentType =
   | "Aadhaar"
   | "PAN"
@@ -32,7 +31,7 @@ export interface EmployeeBasic {
   profilePhotoUrl?: string;
 }
 
-export interface JobDetails { 
+export interface JobDetails {
   designation: Types.ObjectId;
   department: Types.ObjectId;
   employmentType: EmploymentType;
@@ -43,26 +42,12 @@ export interface JobDetails {
   employeeStatus: EmployeeStatus;
   shiftId?: Types.ObjectId;
   attendanceMode?: AttendanceMode;
-  leavepolicy:Types.ObjectId[];
+  leavepolicy: Types.ObjectId[];
   dateOfExit?: Date;
   exitReason?: string;
   fullAndFinalSettled?: boolean;
 }
 
-export interface Compensation { 
-  salary: number;
-  payFrequency: PayFrequency; 
-  salaryStructure?: SalaryStructure;   // current active breakdown
-  salaryHistory?: SalaryStructure[];   // past structures for payslip accuracy
-}
-
-export interface SalaryStructure {
-  basic: number;
-  hra: number;
-  allowances: number;
-  gross: number;
-  effectiveFrom: Date;
-}
 
 export interface BankDetails {
   bankName: string;
@@ -96,7 +81,7 @@ export interface Document {
 }
 
 export interface PayrollInfo {
-  payrollId?: string;              // unique ID inside payroll system
+  payrollId?: string; // unique ID inside payroll system
   payrollGroupId?: Types.ObjectId; // batch / cycle group
   payslipPreference?: PayslipPreference;
 }
@@ -107,7 +92,12 @@ export interface TaxInfo {
 }
 
 export interface AuditEntry {
-   action: "created" | "updated" | "deleted" | "reporting_manager_changed" | "roles_changed";
+  action:
+    | "created"
+    | "updated"
+    | "deleted"
+    | "reporting_manager_changed"
+    | "roles_changed";
   changedBy?: Types.ObjectId;
   changedAt?: Date;
   changes?: string;
@@ -117,15 +107,14 @@ export interface AuditEntry {
   after?: any;
 }
 
-export interface EmployeeData { 
+export interface EmployeeData {
   basic: EmployeeBasic;
   job: JobDetails;
-  compensation: Compensation;
   bank?: BankDetails;
   legal?: LegalDetails;
   address: Address;
-  documents?: Document[]; 
-  payroll?: PayrollInfo; 
+  documents?: Document[];
+  payroll?: PayrollInfo;
   tax?: TaxInfo;
 }
 
@@ -135,7 +124,7 @@ export interface Employee {
   meta: {
     version: number;
     isDeleted?: boolean;
-    auditTrail?: AuditEntry[]; 
+    auditTrail?: AuditEntry[];
   };
   createdAt: Date;
   updatedAt: Date;
