@@ -18,3 +18,6 @@ export * from "./roles.model";
 export * from "./workflow.model";
 export * from "./permission.model";
 export * from "./audit.model";
+export * from "./salaryComponent.model";
+export * from "./salaryStructure.model";
+export * from "./employeeSalary.model";
