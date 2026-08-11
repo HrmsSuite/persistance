@@ -21,3 +21,4 @@ export * from "./audit.model";
 export * from "./salaryComponent.model";
 export * from "./salaryStructure.model";
 export * from "./employeeSalary.model";
+export * from "./salaryAuditLog.model";

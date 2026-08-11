@@ -199,6 +199,13 @@ export const SalaryComponentSchema = new Schema<SalaryComponent>(
       default: 0,
     },
 
+    isDeleted: {
+      type: Boolean,
+      required: true,
+      default: false,
+      index: true,
+    },
+
     metadata: {
       type: Schema.Types.Mixed,
     },
@@ -227,4 +234,4 @@ export const SalaryComponentSchema = new Schema<SalaryComponent>(
  *
  * Both are valid.
  */
-SalaryComponentSchema.index({ companyId: 1, code: 1 }, { unique: true });
+SalaryComponentSchema.index({ companyId: 1, code: 1 }, { unique: true, partialFilterExpression: { isDeleted: false } });

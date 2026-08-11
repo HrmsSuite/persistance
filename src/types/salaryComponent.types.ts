@@ -195,6 +195,7 @@ export interface SalaryComponent {
    * Controls UI/display ordering.
    */
   displayOrder?: number;
+  isDeleted: boolean;
   /**
    * Allows future company-specific configuration
    * without changing the schema every time.

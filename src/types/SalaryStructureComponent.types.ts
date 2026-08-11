@@ -184,6 +184,8 @@ export interface SalaryStructure {
    */
   isDefault?: boolean;
 
+  isDeleted: boolean;
+
   /**
    * Company-specific extension data.
    */

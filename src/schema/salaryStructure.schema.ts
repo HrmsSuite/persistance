@@ -175,6 +175,13 @@ export const SalaryStructureSchema =
         default: false,
       },
 
+      isDeleted: {
+        type: Boolean,
+        required: true,
+        default: false,
+        index: true,
+      },
+
       metadata: {
         type: Schema.Types.Mixed,
       },
@@ -211,7 +218,8 @@ SalaryStructureSchema.index(
   },
   {
     unique: true,
-  },
+    partialFilterExpression: { isDeleted: false }
+  }, 
 );
 
 /**
