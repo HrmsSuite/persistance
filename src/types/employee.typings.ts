@@ -48,7 +48,6 @@ export interface JobDetails {
   fullAndFinalSettled?: boolean;
 }
 
-
 export interface BankDetails {
   bankName: string;
   accountNumber: string;

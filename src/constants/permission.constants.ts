@@ -6,7 +6,7 @@ export const PERMISSION_MODULES = [
   "WORKFLOW",
   "LEAVE",
   "ATTENDANCE",
-  "SHIFT",
+  "SHIFT", 
   "SALARY",
   "PAYROLL",
   "REPORT",

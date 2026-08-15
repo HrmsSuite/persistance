@@ -1,6 +1,6 @@
 import { model } from "mongoose";
 
-import { SalaryAuditLog } from "../types/salaryAuditLog.types"; 
+import { SalaryAuditLog } from "../types/salaryAuditLog.types";
 import { SalaryAuditLogSchema } from "../schema";
 
 export const SalaryAuditLogModel = model<SalaryAuditLog>(

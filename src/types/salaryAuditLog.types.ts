@@ -25,11 +25,7 @@ export type SalaryAuditAction =
 /**
  * Source from which the action originated.
  */
-export type SalaryAuditSource =
-  | "WEB"
-  | "MOBILE"
-  | "API"
-  | "SYSTEM";
+export type SalaryAuditSource = "WEB" | "MOBILE" | "API" | "SYSTEM";
 
 /**
  * Represents a single changed field.

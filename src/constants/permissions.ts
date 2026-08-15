@@ -60,8 +60,7 @@ export const PERMISSIONS = {
 
     UPDATE_HIERARCHY: "attendance.update.hierarchy",
 
-     REGULARIZATION_VIEW_ALL:
-      "attendance.regularization.view.all",
+    REGULARIZATION_VIEW_ALL: "attendance.regularization.view.all",
 
     REGULARIZATION_APPROVE: "attendance.regularization.approve",
 
@@ -82,6 +81,32 @@ export const PERMISSIONS = {
     APPROVE_HIERARCHY: "leave.approve.hierarchy",
 
     REJECT: "leave.reject",
+  }, 
+  SALARY: {
+    COMPONENT: {
+      CREATE: "salary.component.create",
+      VIEW: "salary.component.view",
+      UPDATE: "salary.component.update",
+      DELETE: "salary.component.delete",
+    },
+
+    STRUCTURE: {
+      CREATE: "salary.structure.create",
+      VIEW: "salary.structure.view",
+      UPDATE: "salary.structure.update",
+      DELETE: "salary.structure.delete",
+    },
+
+    EMPLOYEE: {
+      CREATE: "salary.employee.create",
+      VIEW: "salary.employee.view",
+      UPDATE: "salary.employee.update",
+      DELETE: "salary.employee.delete",
+    },
+
+    LOGS: {
+      VIEW: "salary.logs.view",
+    },
   },
 
   PAYROLL: {
