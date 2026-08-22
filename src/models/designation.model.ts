@@ -3,7 +3,7 @@ import { Designations } from "../types";
 
 const DesignationSchema = new Schema<Designations>(
   {
-    companyId: {                          
+    companyId: {
       type: Schema.Types.ObjectId,
       ref: "Company",
       required: true,
