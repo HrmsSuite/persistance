@@ -22,7 +22,21 @@ const DesignationSchema = new Schema<Designations>(
   { timestamps: true },
 );
 
-DesignationSchema.index({ companyId: 1, "data.name": 1 }, { unique: true });
+DesignationSchema.index(
+  {
+    companyId: 1,
+    "data.name": 1,
+    "data.sortHand": 1,
+    "data.level": 1,
+  },
+  {
+    unique: true,
+    partialFilterExpression: {
+      "meta.isDeleted": false,
+    },
+    name: "unique_active_designation",
+  },
+);
 DesignationSchema.index({ "data.level": 1 });
 DesignationSchema.index({ "meta.isDeleted": 1 });
 
