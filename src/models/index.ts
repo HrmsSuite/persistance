@@ -22,3 +22,7 @@ export * from "./salaryComponent.model";
 export * from "./salaryStructure.model";
 export * from "./employeeSalary.model";
 export * from "./salaryAuditLog.model";
+export * from "./company-audit-log.model";
+export * from "./company-email-verification.model";
+export * from "./company-work-location.model";
+export * from "./notification.model";
