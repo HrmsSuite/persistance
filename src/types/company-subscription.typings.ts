@@ -1,4 +1,6 @@
-import type { CompanyPlan } from "./company.typings.js";
+import { CompanyPlan } from "./subscriptionconfig.typings";
+
+
 
 export interface CompanySubscription {
   plan: CompanyPlan;
@@ -15,4 +17,15 @@ export interface CompanySubscription {
   currentPeriodEnd?: Date;
   cancelAtPeriodEnd?: boolean;
   cancelledAt?: Date;
+
+  // NEW: capacity & feature limits (optional, null = unlimited)
+  maxEmployees?: number | null;
+  maxWorkLocations?: number | null;
+  maxRoles?: number | null;
+
+  // Regularization feature flag / limit
+  maxRegularizationsPerMonth?: number | null;
+
+  // Attendance geofence limit per location
+  maxGeofencesPerLocation?: number | null;
 }

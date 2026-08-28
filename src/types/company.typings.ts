@@ -6,29 +6,6 @@ import type { CompanySubscription } from "./company-subscription.typings.js";
 
 export type CompanyId = Types.ObjectId;
 
-export const COMPANY_PLANS = ["FREE", "PRO", "ENTERPRISE"] as const;
-
-export type CompanyPlan = (typeof COMPANY_PLANS)[number];
-
-export const COMPANY_PLAN_CONFIG = {
-  FREE: {
-    storageLimitBytes: 2 * 1024 * 1024 * 1024,
-  },
-
-  PRO: {
-    storageLimitBytes: 50 * 1024 * 1024 * 1024,
-  },
-
-  ENTERPRISE: {
-    storageLimitBytes: 500 * 1024 * 1024 * 1024,
-  },
-} as const satisfies Record<
-  CompanyPlan,
-  {
-    storageLimitBytes: number;
-  }
->;
-
 export const COMPANY_SIZES = [
   "1-10",
   "11-50",

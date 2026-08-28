@@ -220,6 +220,33 @@ const CompanySubscriptionSchema = new Schema(
     cancelledAt: {
       type: Date,
     },
+
+    // NEW: capacity & feature limits
+    maxEmployees: {
+      type: Number,
+      min: 0,
+      // optional, can be null for “use plan default / unlimited”
+    },
+
+    maxWorkLocations: {
+      type: Number,
+      min: 0,
+    },
+
+    maxRoles: {
+      type: Number,
+      min: 0,
+    },
+
+    maxRegularizationsPerMonth: {
+      type: Number,
+      min: 0,
+    },
+
+    maxGeofencesPerLocation: {
+      type: Number,
+      min: 1,
+    },
   },
   {
     _id: false,

@@ -40,3 +40,4 @@ export * from "./notification-audit.typings";
 export * from "./notification-delivery.typings";
 export * from "./notification-recipient.typings";
 export * from "./notification-shared.typings";
+export * from "./subscriptionconfig.typings";
