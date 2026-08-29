@@ -225,27 +225,31 @@ const CompanySubscriptionSchema = new Schema(
     maxEmployees: {
       type: Number,
       min: 0,
-      // optional, can be null for “use plan default / unlimited”
+      default: COMPANY_PLAN_CONFIG.FREE.maxEmployees,
     },
 
     maxWorkLocations: {
       type: Number,
       min: 0,
+      default: COMPANY_PLAN_CONFIG.FREE.maxWorkLocations,
     },
 
     maxRoles: {
       type: Number,
       min: 0,
+      default: COMPANY_PLAN_CONFIG.FREE.maxRoles,
     },
 
     maxRegularizationsPerMonth: {
       type: Number,
       min: 0,
+      default: COMPANY_PLAN_CONFIG.FREE.maxRegularizationsPerMonth,
     },
 
     maxGeofencesPerLocation: {
       type: Number,
       min: 1,
+      default: COMPANY_PLAN_CONFIG.FREE.maxGeofencesPerLocation,
     },
   },
   {
