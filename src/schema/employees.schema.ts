@@ -36,6 +36,16 @@ EmployeeModelSchema.index({ companyId: 1, "data.job.department": 1 });
 EmployeeModelSchema.index({ companyId: 1, "data.job.designation": 1 });
 EmployeeModelSchema.index({ companyId: 1, "data.job.employeeStatus": 1 });
 EmployeeModelSchema.index({ companyId: 1, "data.basic.employeeId": 1 }, { unique: true });
+EmployeeModelSchema.index({
+  companyId: 1,
+  "data.job.workLocationId": 1,
+});
+EmployeeModelSchema.index({
+  companyId: 1,
+  "data.job.workLocationId": 1,
+  "data.job.employeeStatus": 1,
+  "meta.isDeleted": 1,
+});
 EmployeeModelSchema.index({ companyId: 1, "data.basic.email": 1 }, { unique: true });
 EmployeeModelSchema.index({ companyId: 1, "data.payroll.payrollGroupId": 1 });
 EmployeeModelSchema.index({ companyId: 1, "data.job.shiftId": 1 });

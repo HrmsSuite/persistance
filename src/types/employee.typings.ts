@@ -39,6 +39,7 @@ export interface JobDetails {
   dateOfJoining: Date;
   reportingManagerId?: Types.ObjectId;
   workLocation: string;
+  workLocationId: Types.ObjectId;
   employeeStatus: EmployeeStatus;
   shiftId?: Types.ObjectId;
   attendanceMode?: AttendanceMode;

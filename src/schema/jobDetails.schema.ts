@@ -1,23 +1,61 @@
 import { Schema } from "mongoose";
-import { JobDetails, EmploymentType, EmployeeStatus, AttendanceMode } from "../types";
+import {
+  JobDetails,
+  EmploymentType,
+  EmployeeStatus,
+  AttendanceMode,
+} from "../types";
 
-const empType: EmploymentType[] = ["Full-time", "Part-time", "Contract", "Intern"];
-const empStatus: EmployeeStatus[] = ["Active", "Inactive", "On Leave", "Terminated"];
-const attendanceModes: AttendanceMode[] = ["Manual", "Biometric", "GPS", "Hybrid"];
+const empType: EmploymentType[] = [
+  "Full-time",
+  "Part-time",
+  "Contract",
+  "Intern",
+];
+const empStatus: EmployeeStatus[] = [
+  "Active",
+  "Inactive",
+  "On Leave",
+  "Terminated",
+];
+const attendanceModes: AttendanceMode[] = [
+  "Manual",
+  "Biometric",
+  "GPS",
+  "Hybrid",
+];
 
 export const JobDetailSchema = new Schema<JobDetails>(
-  { 
-    designation: { type: Schema.Types.ObjectId, ref: "Designation", required: true },
-    department: { type: Schema.Types.ObjectId, ref: "Department", required: true },
+  {
+    designation: {
+      type: Schema.Types.ObjectId,
+      ref: "Designation",
+      required: true,
+    },
+    department: {
+      type: Schema.Types.ObjectId,
+      ref: "Department",
+      required: true,
+    },
     employmentType: { type: String, enum: empType, required: true },
     dateOfJoining: { type: Date, required: true },
     reportingManagerId: { type: Schema.Types.ObjectId, ref: "Employee" },
     workLocation: { type: String, required: true, trim: true },
-    employeeStatus: { type: String, enum: empStatus, required: true, default: "Active" },
+    workLocationId: {
+      type: Schema.Types.ObjectId,
+      ref: "CompanyWorkLocation", 
+      index: true,
+    },
+    employeeStatus: {
+      type: String,
+      enum: empStatus,
+      required: true,
+      default: "Active",
+    },
     shiftId: { type: Schema.Types.ObjectId, ref: "shifts" },
-    roleIds: [{    type: Schema.Types.ObjectId,  ref: "Role",},],
+    roleIds: [{ type: Schema.Types.ObjectId, ref: "Role" }],
     attendanceMode: { type: String, enum: attendanceModes },
-    leavepolicy: [{ type: Schema.Types.ObjectId, ref: "Leavepolicy" },],
+    leavepolicy: [{ type: Schema.Types.ObjectId, ref: "Leavepolicy" }],
     dateOfExit: { type: Date },
     exitReason: { type: String, trim: true },
     fullAndFinalSettled: { type: Boolean, default: false },
